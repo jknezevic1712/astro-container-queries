@@ -1,0 +1,32 @@
+---
+import CldImage from './CldImage.astro';
+const { src, alt, active } = Astro.props;
+---
+
+<div class="flex flex-col @lg:flex-row">
+	<div class="@lg:w-1/2">
+		<!-- <img
+			src="https://res.cloudinary.com/nikejack/image/upload/v1694056553/blue-period/dog-jacket.png"
+			alt="Dog Jacket"
+		/> -->
+		<CldImage
+			src={src}
+			alt={alt}
+			active={active}
+			className="visible @lg:hidden rounded-t-2xl"
+		/>
+		<CldImage
+			width={900}
+			height={900}
+			src={src}
+			alt={alt}
+			active={active}
+			className="hidden @lg:block object-cover rounded-l-2xl"
+		/>
+	</div>
+	<div
+		class="bg-zinc-950 text-zinc-100 @lg:w-1/2 p-2 @lg:p-5 border-2 border-gray-500"
+	>
+		<slot />
+	</div>
+</div>
